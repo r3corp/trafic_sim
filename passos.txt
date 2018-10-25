@@ -1,6 +1,0 @@
-Resolucao dos passos:
-
-calcula deslocamento dos carros
-calcula carros vizinhos
-calcula mudancas de pista
-
