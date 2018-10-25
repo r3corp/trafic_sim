@@ -1,7 +1,8 @@
 #include "vector"
 
 class Pista {
-    float tamanho;
-    vector<UT> carros;
-    
+    private:
+        float tamanho;
+        vector<UT> carros;
+        Pista *aDireita, *aEsquerda;
 }
