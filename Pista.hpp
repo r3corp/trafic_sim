@@ -1,8 +1,8 @@
-#include "vector"
+#include "deque"
 
 class Pista {
     private:
         float tamanho;
-        vector<UT> carros;
+        deque<class UT> carros;
         Pista *aDireita, *aEsquerda;
-}
+};

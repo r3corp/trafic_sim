@@ -1,7 +1,9 @@
 #include "vector" 
 
+class Pista;
+
 //UnidadeTransito
-Class UT {
+class UT {
     private:
         int largura;
         int comprimento;
@@ -17,5 +19,6 @@ Class UT {
         Pista *pistaCorrente;
     public:
         bool verificaEspacoAoLado(UT *carroAoLado); //Verifica se existe espaço a direita e a esquerda para mudar de pista
+        float calculaDeslocamento(void);//calcula o espaco deslocado em uma unidade de tempo
 
-}
+};
