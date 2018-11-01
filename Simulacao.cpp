@@ -20,7 +20,8 @@ int main (int argc, char* argv)
 {
     //inicialização das Pistas
     
-    Pista pista1, pista2, pista3;
+    Pista pista1, pista2, pista3, pista4, pista5, pista6, pista7, pista8;
+    Juncao juncao1, juncao2;
 
     while (true)
     {
