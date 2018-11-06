@@ -1,5 +1,5 @@
 #include "UT.hpp" 
-#include "Orientacao.hpp"
+
 
 bool UT::verificaEspacoAoLado(UT *carroAoLado) //Verifica se existe espaço a direita e a esquerda para mudar de pista
 {
