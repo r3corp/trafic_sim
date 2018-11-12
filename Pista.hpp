@@ -1,5 +1,6 @@
 #include "vector"
 #include "Orientacao.hpp"
+#include "Logger.hpp"
 
 class UT; 
 

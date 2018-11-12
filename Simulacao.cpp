@@ -35,10 +35,15 @@ void threadMoveUnidadeTransito(UT *ut)
 
 int main (int argc, char** argv)
 {
+    Logger::getInstance().configureDestinationFile("c:\\defaultLoggingFile.log");
+
+    Logger::getInstance().registerLog(__LINE__, __FILE__, "Início da Simulação");
+
     //Parâmetros iniciais
     int probabilidade = 0;
     if (argc >1)
         probabilidade = atoi(argv[1]); //Recebe a porobabilidade de geração de carro através de parâmetro
+    Logger::getInstance().registerLog(__LINE__, __FILE__, "Probabilidade[" + probabilidade + "]");
     //inicialização das Pistas
     
     Pista *pista1 = new Pista()

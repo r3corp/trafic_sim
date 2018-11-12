@@ -16,5 +16,6 @@ using namespace std;
 #include "UT.hpp"
 #include "Pista.hpp"
 #include "Juncao.hpp"
+#include "Logger.hpp"
 //realizar os passos da simulacao 
 

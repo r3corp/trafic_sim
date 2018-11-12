@@ -3,6 +3,7 @@
 void Pista::geraCarro(int probabilidade)
 {
     //Realiza a geração de carros verificando se existe espaço para entrar um novo carro e baseado no parâmetro de probabilidade
+    Logger::getInstance().registerLog(__LINE__, __FILE__, "Gerando Carro");
 }
 
 Pista *Pista::retornaPista(ORIENTACAO orientacao)
