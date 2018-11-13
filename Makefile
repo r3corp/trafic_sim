@@ -1,4 +1,4 @@
-CC=gcc -std=c++17
+CC=g++ -std=c++17
 CFLAGS=-I. 	 
 DEPS = Simulacao.h
 OBJ = Simulacao.o Logger.o Juncao.o Pista.o UT.o Orientacao.o

@@ -27,8 +27,9 @@ class Logger
         ~Logger();
 
     public:
-        Logger(Logger const&) = delete;
-        void operator=(Logger const&) = delete;
+        //Logger(Logger const&) = delete;
+        //void operator=(Logger const&) = delete;
+        
         // Note: Scott Meyers mentions in his Effective Modern
         //       C++ book, that deleted functions should generally
         //       be public as it results in better error messages
