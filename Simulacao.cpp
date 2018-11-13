@@ -19,8 +19,16 @@
 void threadGeraCarro(Pista *pista, int probabilidade)
 {
     //Thread ativa semrpe gerando carros segundo a probabilidade para a pista
+    std::vector<std::thread*> threadsCarros;
     while(true)
-       pista->geraCarro(probabilidade);
+    {
+       if (pista->geraCarro(probabilidade))
+       {
+           //se a pista tiver um novo carro segundo a probabilidade
+           threadCarros.push_back(new thread(threadMoveUnidadeTransito, new UT(pista))) ;
+       }
+       Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Gera Carro");
+    }
 }
 
 void threadMoveUnidadeTransito(UT *ut)
@@ -30,6 +38,7 @@ void threadMoveUnidadeTransito(UT *ut)
     {
         ut->calculaDeslocamento();
         this_thread::sleep_for (chrono::milliseconds(100)); // o carro se movimenta a cada 0.1 segundo
+        Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro");
     }
 }
 
@@ -46,16 +55,16 @@ int main (int argc, char** argv)
     Logger::getInstance().registerLog(__LINE__, __FILE__, "Probabilidade[" + probabilidade + "]");
     //inicialização das Pistas
     
-    Pista *pista1 = new Pista()
-        , *pista2 = new Pista()
-        , *pista3 = new Pista()
-        , *pista4 = new Pista()
-        , *pista5 = new Pista()
-        , *pista6 = new Pista()
-        , *pista7 = new Pista()
-        , *pista8 = new Pista();
-    Juncao *juncao1 = new Juncao()
-        , *juncao2 = new Juncao();
+    Pista *pista1 = new Pista(1)
+        , *pista2 = new Pista(2)
+        , *pista3 = new Pista(3)
+        , *pista4 = new Pista(4)
+        , *pista5 = new Pista(5)
+        , *pista6 = new Pista(6)
+        , *pista7 = new Pista(7)
+        , *pista8 = new Pista(8);
+    Juncao *juncao1 = new Juncao(1)
+        , *juncao2 = new Juncao(2);
 
     //criar thread para gerar carros
     //Gera Carros nas pistas de 1 a 6
