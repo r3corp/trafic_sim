@@ -1,4 +1,4 @@
-CC= "g++ -std=gnu++11" 
+CC=gcc -std=c++17
 CFLAGS=-I. 	 
 DEPS = Simulacao.h
 OBJ = Simulacao.o Logger.o Juncao.o Pista.o UT.o Orientacao.o
@@ -6,5 +6,5 @@ OBJ = Simulacao.o Logger.o Juncao.o Pista.o UT.o Orientacao.o
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-hellomake: $(OBJ)
+Simulacao: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
