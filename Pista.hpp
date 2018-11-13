@@ -17,6 +17,6 @@ class Pista {
     public:
         Pista(void) {}
         Pista(int numero) : numero(numero) {}
-        void geraCarro(int probabilidade);
+        bool geraCarro(int probabilidade);
         Pista *retornaPista(ORIENTACAO orientacao);
 };

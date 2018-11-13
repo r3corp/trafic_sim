@@ -1,9 +1,12 @@
 #include "Pista.hpp"
 
-void Pista::geraCarro(int probabilidade)
+bool Pista::geraCarro(int probabilidade)
 {
     //Realiza a geração de carros verificando se existe espaço para entrar um novo carro e baseado no parâmetro de probabilidade
     Logger::getInstance().registerLog(__LINE__, __FILE__, "Gerando Carro");
+    if (rand()*100 > probabilidade) 
+        return true;
+    return false;
 }
 
 Pista *Pista::retornaPista(ORIENTACAO orientacao)
