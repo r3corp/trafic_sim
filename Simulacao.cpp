@@ -23,12 +23,12 @@ void threadGeraCarro(Pista *pista, int probabilidade)
     std::vector<std::thread*> threadsCarros;
     while(true)
     {
-       if (pista->geraCarro(probabilidade))
+		if (pista->geraCarro(probabilidade) >= (rand() % 100 + 1))     // v2 in the range 1 to 100
        {
            //se a pista tiver um novo carro segundo a probabilidade
            threadsCarros.push_back(new thread(threadMoveUnidadeTransito, new UT(pista))) ;
        }
-       Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Gera Carro");
+       Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Gera Carro id [" + std::to_string(pista->getId()) + "] [" + std::to_string(threadsCarros.size()) + "] carros.");
     }
 }
 
@@ -39,13 +39,15 @@ void threadMoveUnidadeTransito(UT *ut)
     {
         ut->calculaDeslocamento();
         this_thread::sleep_for (chrono::milliseconds(100)); // o carro se movimenta a cada 0.1 segundo
-        Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro");
+        Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro [" + std::to_string(ut->getId()) + "]" );
     }
 }
 
 int main (int argc, char** argv)
 {
-    Logger::getInstance().configureDestinationFile("c:\\defaultLoggingFile.log");
+	
+
+    Logger::getInstance().configureDestinationFile("defaultLoggingFile.log");
 
     Logger::getInstance().registerLog(__LINE__, __FILE__, "Início da Simulação");
 

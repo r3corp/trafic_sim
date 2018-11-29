@@ -19,4 +19,5 @@ class Pista {
         Pista(int numero) : numero(numero) {}
         bool geraCarro(int probabilidade);
         Pista *retornaPista(ORIENTACAO orientacao);
+		int getId() { return numero; }
 };

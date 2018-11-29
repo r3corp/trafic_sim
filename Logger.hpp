@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <mutex>
+
 class Pista;
 
 //Singleton Loging
@@ -11,6 +13,7 @@ class Logger
     private:
         std::string logFileName;
         std::ofstream destinationFileWriter;
+		std::mutex locker;
 
         Logger() {}
         // C++ 03
