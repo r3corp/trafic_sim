@@ -75,6 +75,13 @@ int main (int argc, char** argv)
     thread geracao4 (threadGeraCarro, pista4, probabilidade);
     thread geracao5 (threadGeraCarro, pista5, probabilidade);
     thread geracao6 (threadGeraCarro, pista6, probabilidade);
+	
+	geracao1.join();
+	geracao2.join();
+	geracao3.join();
+	geracao4.join();
+	geracao5.join();
+	geracao6.join();
 
     //Calcula Deslocamentos
     //criar uma thread por carrro

@@ -3,7 +3,7 @@
 
 bool UT::verificaEspacoAoLado(UT *carroAoLado) //Verifica se existe espaço a direita e a esquerda para mudar de pista
 {
-
+	return false;
 }
 
 float UT::calculaDeslocamento(void) //calcula o espaco deslocado em uma unidade de tempo
@@ -11,7 +11,7 @@ float UT::calculaDeslocamento(void) //calcula o espaco deslocado em uma unidade 
     //Calcula o tempo minimo para deslocamneto 
     if (!calculaSlotTempo())
         return 0;//Só precisa calcular deslocamento se tiver o tempo para isso
-
+	return 1;
 }
 
 void UT::movimentaUnidadeTransito(float distancia) //aumenta a distancia percorrida
