@@ -41,11 +41,19 @@ class UT {
 
     public:
 		UT(Pista *pista);// : pistaCorrente(pista);
-        bool verificaEspacoAoLado(UT *carroAoLado); //Verifica se existe espaço a direita e a esquerda para mudar de pista
-        float calculaDeslocamento(void);//calcula o espaco deslocado em uma unidade de tempo
-        void movimentaUnidadeTransito(float distancia);//aumenta a distancia percorrida 
-        bool calculaSlotTempo(void);
-        float retornaPosicao(void);
+
+		bool verificaEspacoAoLado(UT *carroAoLado); //Verifica se existe espaço a direita e a esquerda para mudar de pista
+
+		float calculaDeslocamento(void);//calcula o espaco deslocado em uma unidade de tempo
+
+		void movimentaUnidadeTransito(float distancia);//aumenta a distancia percorrida 
+
+		bool calculaSlotTempo(void);
+
+		float retornaPosicao(void);
+
 		int getId();
+
+		UT* getCarroAdjacente(Pista *pista, ORIENTACAO orientacao);
 };
 

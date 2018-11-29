@@ -13,10 +13,24 @@ UT::UT(Pista * pista = nullptr) : pistaCorrente(pista)
 	int randComportamento = rand() % 100;
 	this->comportamento = (randComportamento < 20 ? 1 : randComportamento < 40 ? 2 : randComportamento < 60 ? 3 : randComportamento < 80 ? 4 : 5);
 	this->largura = 2.5; //default 2.5 inicialmente
-	//this->
+	this->distanciaPercorridaNaPista = 0;
+	this->distanciaPercorridaTotal = 0;
+	this->velocidade = 40; //definido 40 km/h inicialmente mas mudar para uma velocidade randomica
+	this->aceleracao = 3; //definido 3 km/h2 inicialmente mas mudar para uma para aceleração randomica
+
+	//descobrir os carros ao redor
+	this->aFrente = getCarroAdjacente(this->pistaCorrente, ORIENTACAO::A_FRENTE);
+	this->aDireita = getCarroAdjacente(this->pistaCorrente, ORIENTACAO::A_DIREITA);
+	this->aEsquerda = getCarroAdjacente(this->pistaCorrente, ORIENTACAO::A_ESQUERDA);
+	this->aTras = getCarroAdjacente(this->pistaCorrente, ORIENTACAO::A_TRAS);
 }
 
-//retorna o carro da posição informada para trás
+//retorna o carro da posição informada
+UT* UT::getCarroAdjacente(Pista *pista, ORIENTACAO orientacao)
+{
+	return this;
+}
+
 
 int UT::getId()
 {
