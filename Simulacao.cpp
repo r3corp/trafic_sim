@@ -25,7 +25,7 @@ void threadGeraCarro(Pista *pista, int probabilidade)
        if (pista->geraCarro(probabilidade))
        {
            //se a pista tiver um novo carro segundo a probabilidade
-           threadCarros.push_back(new thread(threadMoveUnidadeTransito, new UT(pista))) ;
+           threadsCarros.push_back(new thread(threadMoveUnidadeTransito, new UT(pista))) ;
        }
        Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Gera Carro");
     }
@@ -52,7 +52,7 @@ int main (int argc, char** argv)
     int probabilidade = 0;
     if (argc >1)
         probabilidade = atoi(argv[1]); //Recebe a porobabilidade de geração de carro através de parâmetro
-    Logger::getInstance().registerLog(__LINE__, __FILE__, "Probabilidade[" + probabilidade + "]");
+    Logger::getInstance().registerLog(__LINE__, __FILE__, "Probabilidade[" + std::to_string(probabilidade) + "]");
     //inicialização das Pistas
     
     Pista *pista1 = new Pista(1)
