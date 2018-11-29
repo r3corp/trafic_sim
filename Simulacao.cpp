@@ -15,6 +15,7 @@
 | . | . || . | . || . | . |
   6   5    4   3    2   1
 */
+void threadMoveUnidadeTransito(UT *ut);
 
 void threadGeraCarro(Pista *pista, int probabilidade)
 {

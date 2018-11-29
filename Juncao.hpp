@@ -1,3 +1,6 @@
+#pragma once
+
+class Pista;
 
 //Uma junção destinase a transformação de duas pistas em uma
 class Juncao

@@ -1,7 +1,7 @@
 CC=g++ -std=c++17
 CFLAGS=-I. 	 
-DEPS = Simulacao.h
-OBJ = Simulacao.o Logger.o Juncao.o Pista.o UT.o Orientacao.o
+DEPS = Simulacao.h Orientacao.h
+OBJ = Logger.o Juncao.o Pista.o UT.o Simulacao.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)

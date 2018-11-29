@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+class Pista;
 
 //Singleton Loging
 class Logger
@@ -23,8 +24,6 @@ class Logger
         // =======
         // We can use the better technique of deleting the methods
         // we don't want.
-
-        ~Logger();
 
     public:
         //Logger(Logger const&) = delete;
