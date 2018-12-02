@@ -7,7 +7,6 @@ class UT;
 class Pista {
     private:
         int numero;
-        float tamanho;
 
         std::vector<UT *> carros;
 
@@ -15,6 +14,7 @@ class Pista {
 
         ~Pista() {}
     public:
+		float tamanho = 200; // tamanho da pista. Inicialmente 3km.
         Pista(void) {}
         Pista(int numero) : numero(numero) {}
         bool geraCarro(int probabilidade);

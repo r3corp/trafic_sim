@@ -1,4 +1,5 @@
 #include "UT.hpp" 
+#include "Pista.hpp" 
 
 
 int UT::carCount = 0; //Inicialização do membro estático
@@ -15,8 +16,8 @@ UT::UT(Pista * pista = nullptr) : pistaCorrente(pista)
 	this->largura = 2.5; //default 2.5 inicialmente
 	this->distanciaPercorridaNaPista = 0;
 	this->distanciaPercorridaTotal = 0;
-	this->velocidade = 40; //definido 40 km/h inicialmente mas mudar para uma velocidade randomica
-	this->aceleracao = 3; //definido 3 km/h2 inicialmente mas mudar para uma para aceleração randomica
+	this->velocidade = 11; //definido 40 km/h -> 11m/s. inicialmente mas mudar para uma velocidade randomica
+	this->aceleracao = 0.00015; //definido 3 km/h2 -> 0.00015 m/s^2 inicialmente mas mudar para uma para aceleração randomica
 
 	//descobrir os carros ao redor
 	this->aFrente = getCarroAdjacente(this->pistaCorrente, ORIENTACAO::A_FRENTE);
@@ -42,18 +43,28 @@ bool UT::verificaEspacoAoLado(UT *carroAoLado) //Verifica se existe espaço a di
 	return false;
 }
 
-float UT::calculaDeslocamento(void) //calcula o espaco deslocado em uma unidade de tempo
-{
-    //Calcula o tempo minimo para deslocamneto 
-    if (!calculaSlotTempo())
-        return 0;//Só precisa calcular deslocamento se tiver o tempo para isso
-	return 1;
+
+bool UT::verificaSeCarroChegouAoFimDaPista() {
+	return this->distanciaPercorridaNaPista >= this->pistaCorrente->tamanho;
 }
 
-void UT::movimentaUnidadeTransito(float distancia) //aumenta a distancia percorrida
+float UT::calculaDeslocamento(float tempo) //calcula o espaco deslocado em uma unidade de tempo
 {
-    if (calculaSlotTempo())
-        tempoMovimentacaoAnterior = std::chrono::steady_clock::now();
+	float tempoEmHoras = tempo / (1000 ); // milisegundos para segundos
+	return this->velocidade*tempoEmHoras + this->aceleracao*pow(tempoEmHoras, 2) / 2; //distancia em metros
+    //Calcula o tempo minimo para deslocamneto 
+    //if (!calculaSlotTempo())
+        //return 0;//Só precisa calcular deslocamento se tiver o tempo para isso
+	//return 1;
+}
+
+void UT::movimentaUnidadeTransito(float tempo) //aumenta a distancia percorrida
+{
+	float distancia = this->calculaDeslocamento(tempo); 
+	this->distanciaPercorridaNaPista += distancia;
+	this->distanciaPercorridaTotal += distancia;
+    //if (calculaSlotTempo())
+    //    tempoMovimentacaoAnterior = std::chrono::steady_clock::now();
 }
 
 bool UT::calculaSlotTempo(void)

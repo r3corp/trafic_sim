@@ -34,12 +34,23 @@ void threadGeraCarro(Pista *pista, int probabilidade)
 
 void threadMoveUnidadeTransito(UT *ut)
 {
+	long tempoEntreMovimentacoes = 100; // todo: definir como propriedade
+
     //Thread ativa sempre movimentando a unidade de transito
-    while(true)
+	bool carroEmMovimento = true;
+
+    while(carroEmMovimento)
     {
-        ut->calculaDeslocamento();
-        this_thread::sleep_for (chrono::milliseconds(100)); // o carro se movimenta a cada 0.1 segundo
-        Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro [" + std::to_string(ut->getId()) + "]" );
+        ut->movimentaUnidadeTransito(tempoEntreMovimentacoes);
+		if (ut->verificaSeCarroChegouAoFimDaPista()) {
+			// todo: logica para mudar de pista
+			carroEmMovimento = false;
+			Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro Chegou Ao Fim da Pista [" + std::to_string(ut->getId()) + "]");
+
+		}
+
+        this_thread::sleep_for (chrono::milliseconds(tempoEntreMovimentacoes)); // o carro se movimenta a cada 0.1 segundo
+		Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro [" + std::to_string(ut->getId()) + "]." + "Distancia Percorrida: "+ std::to_string(ut->distanciaPercorridaNaPista) + " de " + std::to_string(ut->pistaCorrente->tamanho) );
     }
 }
 
