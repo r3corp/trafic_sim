@@ -32,3 +32,17 @@ UpgradeLog.html
 
 # VsCode debug files
 .vs
+
+# Executable files
+*.exe
+*.exe.*
+
+# Log Files
+*.log
+
+# Html Files
+*.htm
+*.html
+
+# Build directory
+build
