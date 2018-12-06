@@ -60,8 +60,8 @@ bool UT::verificaEspacoAoLado(UT *carroAoLado) //Verifica se existe espaço a di
 	}
 }
 
-
-bool UT::verificaSeCarroChegouAoFimDaPista() {
+bool UT::verificaSeCarroChegouAoFimDaPista() 
+{
 	return this->distanciaPercorridaNaPista >= this->pistaCorrente->tamanho;
 }
 
