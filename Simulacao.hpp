@@ -1,3 +1,6 @@
+#ifndef SIMULACAO_HEADER
+#define SIMULACAO_HEADER
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <thread>
@@ -20,3 +23,5 @@ using namespace std;
 #include "Logger.hpp"
 //realizar os passos da simulacao 
 
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef UT_HEADER
+#define UT_HEADER
+
 #include <vector> 
 #include <chrono>
 #include <ratio>
@@ -64,3 +67,4 @@ class UT {
 		UT* getCarroAdjacente(Pista *pista, ORIENTACAO orientacao);
 };
 
+#endif

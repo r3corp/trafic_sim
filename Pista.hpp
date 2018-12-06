@@ -1,3 +1,6 @@
+#ifndef PISTA_HEADER
+#define PISTA_HEADER
+
 #include "vector"
 #include "Orientacao.hpp"
 #include "Logger.hpp"
@@ -21,3 +24,5 @@ class Pista {
         Pista *retornaPista(ORIENTACAO orientacao);
 		int getId() { return numero; }
 };
+
+#endif
