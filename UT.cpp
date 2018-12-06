@@ -40,7 +40,24 @@ int UT::getId()
 
 bool UT::verificaEspacoAoLado(UT *carroAoLado) //Verifica se existe espaço a direita e a esquerda para mudar de pista
 {
-	return false;
+	float distanciaEntreOsCarros = carroAoLado->distanciaPercorridaNaPista - this->distanciaPercorridaNaPista;
+	bool carroAoLadoEstaNaFrente = distanciaEntreOsCarros > 0.0f;
+	const float folgaParaMudancaDePista = 2.0f;
+
+	if (carroAoLadoEstaNaFrente) 
+	{
+		float distanciaDoCarroDaFrente = carroAoLado->aFrente->distanciaPercorridaNaPista - carroAoLado->distanciaPercorridaNaPista;
+		bool temEspacoParaLado = distanciaDoCarroDaFrente >= this->comprimento + folgaParaMudancaDePista;
+		
+		return temEspacoParaLado;
+	}
+	else
+	{ 
+		float distanciaDoCarroDeTras = carroAoLado->distanciaPercorridaNaPista - carroAoLado->aTras->distanciaPercorridaNaPista;
+		bool temEspacoParaLado =  distanciaDoCarroDeTras >= this->comprimento + folgaParaMudancaDePista;
+		
+		return temEspacoParaLado;
+	}
 }
 
 
