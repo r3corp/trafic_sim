@@ -21,6 +21,7 @@ class Pista {
         Pista(void) {}
         Pista(int numero) : numero(numero) {}
         bool geraCarro(int probabilidade);
+        void adicionarUnidadeDeTransito(UT* unidadeDeTransito);
         Pista *retornaPista(ORIENTACAO orientacao);
 		int getId() { return numero; }
 };

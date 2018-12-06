@@ -14,14 +14,13 @@
 #include <ratio>
 #include <random>
 
-using namespace std;
-
+#include "ThreadHelper.hpp"
 #include "Orientacao.hpp"
 #include "UT.hpp"
 #include "Pista.hpp"
 #include "Juncao.hpp"
 #include "Logger.hpp"
-//realizar os passos da simulacao 
 
+using namespace std;
 
 #endif

@@ -1,6 +1,3 @@
-#ifndef SIMULACAO_HEADER
-#define SIMULACAO_HEADER
-
 #include "Simulacao.hpp"
 
 /* Diagrama das pistas e unções 
@@ -21,42 +18,14 @@
 
 #define MEIO_SEGUNDO 500
 
-std::vector<std::thread*> threadsCarros;
-
-void threadMoveUnidadeTransito(UT *ut);
-
-void aguardar(int miliSegundos) 
-{
-    std::this_thread::sleep_for (std::chrono::milliseconds(miliSegundos));
-}
-
 void threadGeraCarro(Pista *pista, int probabilidade)
 {        
-    if (pista->geraCarro(probabilidade) >= (rand() % 100 + 1))     // v2 in the range 1 to 100
+    if (pista->geraCarro(probabilidade) >= rand() % 100 + 1)     // v2 in the range 1 to 100
     {
-        threadsCarros.push_back(new thread(threadMoveUnidadeTransito, new UT(pista))) ;
+        UT * unidadeDeTransito = new UT(pista);        
+        pista->adicionarUnidadeDeTransito(unidadeDeTransito);
 
-        Logger::getInstance().registerLog(__LINE__, __FILE__, "Carro Gerado id [" + std::to_string(pista->getId()) + "] [" + std::to_string(threadsCarros.size()) + "] carros.");
-    }
-}
-
-void threadMoveUnidadeTransito(UT *ut)
-{
-	long tempoEntreMovimentacoes = 100; // todo: definir como propriedade
-	bool carroEmMovimento = true;
-
-    while(carroEmMovimento)
-    {
-        ut->movimentaUnidadeTransito(tempoEntreMovimentacoes);
-		if (ut->verificaSeCarroChegouAoFimDaPista()) 
-        {
-			// todo: logica para mudar de pista
-			carroEmMovimento = false;
-			Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro Chegou Ao Fim da Pista [" + std::to_string(ut->getId()) + "]");
-		}
-
-        aguardar(tempoEntreMovimentacoes);
-		Logger::getInstance().registerLog(__LINE__, __FILE__, "Thread Move Carro [" + std::to_string(ut->getId()) + "]." + "Distancia Percorrida: "+ std::to_string(ut->distanciaPercorridaNaPista) + " de " + std::to_string(ut->pistaCorrente->tamanho) );
+        Logger::getInstance().registerLog(__LINE__, __FILE__, "Carro Gerado id [" + std::to_string(pista->getId()) + "].");
     }
 }
 
@@ -100,7 +69,7 @@ int main (int argc, char** argv)
         geracao5.join();
         geracao6.join();
 
-        aguardar(MEIO_SEGUNDO);
+        ThreadHelper::aguardar(MEIO_SEGUNDO);
     }
 
     //Calcula Deslocamentos
@@ -112,5 +81,3 @@ int main (int argc, char** argv)
     
     return 0;
 } 
-
-#endif

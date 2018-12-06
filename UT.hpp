@@ -7,20 +7,22 @@
 #include <ctime>
 #include <random>
 
+#include "ThreadHelper.hpp"
 #include "Orientacao.hpp"
 
 class Pista;
 
 //UnidadeTransito
-class UT {
+class UT 
+{
     private:
 		static int carCount;
 
 		int id;
 
-        int largura;
+        float largura;
 
-        int comprimento;
+        float comprimento;
 
         float velocidade;
 
@@ -45,18 +47,19 @@ class UT {
 
 		float distanciaPercorridaNaPista = 0;
 
-
 		UT(Pista *pista);// : pistaCorrente(pista);
+
+		void mover();
 
 		bool verificaEspacoAoLado(UT *carroAoLado); //Verifica se existe espaço a direita e a esquerda para mudar de pista
 
 		bool verificaSeCarroChegouAoFimDaPista(); // se carro chegou ao fim da pista ele sera removido
 
 		//float calculaDeslocamento(void);//calcula o espaco deslocado em uma unidade de tempo
-		float calculaDeslocamento(float tempo);
+		float calculaDeslocamento(long long tempo);
 
 		//void movimentaUnidadeTransito(float distancia);//aumenta a distancia percorrida 
-		void UT::movimentaUnidadeTransito(float tempo); //aumenta a distancia percorrida
+		void UT::movimentaUnidadeTransito(long long tempo); //aumenta a distancia percorrida
 
 		bool calculaSlotTempo(void);
 

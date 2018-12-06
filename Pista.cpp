@@ -17,3 +17,8 @@ Pista *Pista::retornaPista(ORIENTACAO orientacao)
         return this->aEsquerda;
     return nullptr;
 }
+
+void Pista::adicionarUnidadeDeTransito(UT* unidadeDeTransito) 
+{
+    this->carros.push_back(unidadeDeTransito);
+}
